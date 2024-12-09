@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Comparison Gallery</title>
+    <title>Deep Art Gallery</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -29,22 +29,24 @@
             flex-direction: column;
             align-items: center;
             width: 450px;
-            border: 1px solid #ccc;
             padding: 10px;
             border-radius: 8px;
             background-color: #f9f9f9;
             cursor: pointer;
         }
 
-        .gallery .images {
+        .gallery .image-container {
             display: flex;
             gap: 10px;
+            border: 1px solid #ddd; /* Border around all images */
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #fff;
         }
 
         .gallery img {
-            width: 200px;
+            width: 120px;
             height: auto;
-            border: 1px solid #ddd;
             border-radius: 5px;
         }
 
@@ -79,9 +81,11 @@
         }
 
         .lightbox img {
-            max-width: 100%;
-            max-height: 100%;
+            width: 400px;
+            height: 400px;
+            object-fit: cover;
             border-radius: 10px;
+            margin: 10px;
         }
 
         .lightbox-caption {
@@ -103,14 +107,19 @@
 <body>
 <h1>Deep Art Gallery</h1>
 <div class="gallery">
-    <figure onclick="openLightbox('Comparison 1: Picasso Style Transformation with 2000 Iterations by Jeremy Rhodes', './data/input/not_jeremy.png', './data/output/not_jeremy_picasso_self_portrait.png')">
-        <div class="images">
+    <figure onclick="openLightbox('Comparison 1: Picasso Style Transformation with 2000 Iterations by Jeremy Rhodes',
+     './data/input/not_jeremy.png',
+     './data/output/not_jeremy_picasso_self_portrait.png',
+     './data/styles/picasso_self_portrait.png')">
+        <div class="image-container">
             <img src="./data/input/not_jeremy.png" alt="Not Jeremy">
-            <img src="./data/output/not_jeremy_picasso_self_portrait.png" alt="Not Jeremy in Picasso Style Transformation with 2000 Iterations">
+            <img src="./data/styles/picasso_self_portrait.png" alt="Picasso Style">
+            <img src="./data/output/not_jeremy_picasso_self_portrait.png"
+                 alt="Not Jeremy in Picasso Style Transformation with 2000 Iterations">
         </div>
         <figcaption>Comparison 1: Picasso Style Transformation with 2000 Iterations by Jeremy Rhodes</figcaption>
     </figure>
-    <!--  Add your images -->
+    <!-- Add more images as needed -->
 </div>
 
 <div class="lightbox" id="lightbox">
@@ -118,6 +127,7 @@
     <div class="lightbox-content">
         <div class="images">
             <img id="lightbox-source" alt="Source Image">
+            <img id="lightbox-style" alt="Style Image">
             <img id="lightbox-generated" alt="Generated Image">
         </div>
         <div class="lightbox-caption" id="lightbox-caption"></div>
@@ -125,10 +135,11 @@
 </div>
 
 <script>
-    function openLightbox(caption, source, generated) {
+    function openLightbox(caption, source, generated, style) {
         const lightbox = document.getElementById('lightbox');
         document.getElementById('lightbox-caption').innerText = caption;
         document.getElementById('lightbox-source').src = source;
+        document.getElementById('lightbox-style').src = style;
         document.getElementById('lightbox-generated').src = generated;
         lightbox.classList.add('active');
     }
