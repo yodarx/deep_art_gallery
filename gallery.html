@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Comparison Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .gallery figure {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 450px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+        }
+
+        .gallery .images {
+            display: flex;
+            gap: 10px;
+        }
+
+        .gallery img {
+            width: 200px;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .gallery figcaption {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #333;
+            text-align: center;
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            text-align: center;
+        }
+
+        .lightbox img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 10px;
+        }
+
+        .lightbox-caption {
+            margin-top: 10px;
+            color: white;
+            font-size: 18px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1>Deep Art Gallery</h1>
+<div class="gallery">
+    <figure onclick="openLightbox('Comparison 1: Picasso Style Transformation by Jeremy Rhodes', './data/input/paris.png', './data/output/paris.png')">
+        <div class="images">
+            <img src="./data/input/paris.png" alt="Source Image 1">
+            <img src="./data/output/paris.png" alt="Generated Image 1">
+        </div>
+        <figcaption>Comparison 1: Picasso Style Transformation by Jeremy Rhodes</figcaption>
+    </figure>
+</div>
+
+<div class="lightbox" id="lightbox">
+    <div class="lightbox-close" onclick="closeLightbox()">×</div>
+    <div class="lightbox-content">
+        <div class="images">
+            <img id="lightbox-source" alt="Source Image">
+            <img id="lightbox-generated" alt="Generated Image">
+        </div>
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+</div>
+
+<script>
+    function openLightbox(caption, source, generated) {
+        const lightbox = document.getElementById('lightbox');
+        document.getElementById('lightbox-caption').innerText = caption;
+        document.getElementById('lightbox-source').src = source;
+        document.getElementById('lightbox-generated').src = generated;
+        lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+    }
+</script>
+</body>
+</html>
