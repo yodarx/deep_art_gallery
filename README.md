@@ -5,6 +5,7 @@ die Ergebnisse in einer Galerie darzustellen. Um dein eigenes Ergebnis hinzuzuf�
 
 [Link zur Gallery](https://yodarx.github.io/deep_art_gallery/)
 
+[Link zum Colab](https://colab.research.google.com/github/yodarx/deep_art_gallery/blob/main/deep_art_gallery.ipynb)
 ## Schritte zum Hinzufügen eines Ergebnisses zur Galerie
 
 1. Repository auschecken
@@ -32,7 +33,7 @@ die Ergebnisse in einer Galerie darzustellen. Um dein eigenes Ergebnis hinzuzuf�
 
     * Alternativ kannst du das Bild auch mit dem Jupyter-Notebook `deep_art_gallery.ipynb` generieren. Es wird
       empfohlen, das
-      Notebook in Google Colab mit T4-Ressourcen auszuführen, um die besten Ergebnisse zu erzielen.
+      Notebook in [Google Colab](https://colab.research.google.com/github/yodarx/deep_art_gallery/blob/main/deep_art_gallery.ipynb) mit T4-Ressourcen auszuführen, um schnell, die besten Ergebnisse zu erzielen.
 
 1. Bild in Gallery hinzufügen
 
